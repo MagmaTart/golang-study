@@ -9,7 +9,7 @@ Go 설치 후 초기 환경 세팅을 진행한다.
 
 ### 코드 컴파일 및 실행
 - gofmt : GO의 표준 스타일 가이드에 맞도록 코드를 자동 수정해주는 툴
-- goimports : 자동으로 import 경로를 추론하여 코드 상단에 추가해주는 툴
+- goimports : 자동으로 import 경로를 추론하여 코드 상단에 추가해주는 툴\
 나 같은 경우는 goimports가 없어서, `sudo apt-get install golang-golang-x-tools`로 설치해줬다.
 
 ```
