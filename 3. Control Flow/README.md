@@ -18,9 +18,11 @@ Go에서의 연산자는 대부분이 C와 비슷하다. 아래와 같은 연산
 Go에서 if문은 아래와 같이 사용한다. 조건의 형식은 여태 보던 언어들과 비슷하다.
 
 ```go
-a := 10
-if a > 5 {
-    fmt.Println("a is greater than 5")
+func if_test1() {
+    a := 10
+    if a > 5 {
+        fmt.Println("a is greater than 5")
+    }
 }
 ```
 
@@ -29,22 +31,28 @@ if a > 5 {
 else if도 같은 형식으로 사용한다.
 
 ```go
-a := 70
-if a < 60 {
-    fmt.Println("a < 60")
-} else if a > 60 && a < 70 {
-    fmt.Println("60 < a < 70")
-} else {
-    fmt.Println("a > 70")
+func if_test2() {
+    a := 70
+    if a < 60 {
+        fmt.Println("a < 60")
+    } else if a > 60 && a < 70 {
+        fmt.Println("60 < a < 70")
+    } else {
+        fmt.Println("a > 70")
+    }
 }
 ```
 
 또한 __Optional Statement__ 라고 해서, 조건식의 평가 직전에 간단한 Statement를 실행할 수 있다. 이 Statement에서 선언된 변수 등은 현재 if문의 Scope 안에서만 사용할 수 있다.\
 
 ```go
-a := 5
-if num := a*a; num > 20 {
-    fmt.Println("num is greater than 20")
+func if_test3() {
+    a := 5
+    if num := a * a; num > 20 {
+        fmt.Println("num is greater than 20")
+    } else {
+        fmt.Println("num is equal or smaller than 20")
+    }
 }
 ```
 
@@ -57,14 +65,16 @@ C언어에서의 switch와 기본적으로 같은 기능을 하지만, 훨씬 �
 1. Go의 switch에서는 하나의 case문에 여러 값을 지정할 수 있다.
 
 ```go
-num := 3
-switch num {
-case 1, 2:
-    fmt.Println("A")
-case 3, 4:
-    fmt.Println("B")
-default:
-    fmt.Println("C")
+func switch_test1() {
+    num := 2
+    switch num {
+    case 1:
+        fmt.Println("num == 1")
+    case 2, 3:
+        fmt.Println("num == 2 or num == 3")
+    default:
+        fmt.Println("num > 3")
+    }
 }
 ```
 
@@ -72,28 +82,32 @@ default:
 case 키워드에도 마찬가지로 값이 아니라 조건문을 넣을 수 있다. 이 경우 조건을 만족하는 case문을 실행하게 된다.
 
 ```go
-num := 2
-switch mul := num * 2; {
-case mul < 4:
-    fmt.Println("mul < 4")
-case mul >= 4 && mul < 6:
-    fmt.Println("4 <= mul < 6")
-default:
-    fmt.Println("mul >= 6")
+func switch_test2() {
+    num := 2
+    switch mul := num * 2; {
+    case mul < 4:
+        fmt.Println("mul < 4")
+    case mul >= 4 && mul < 6:
+        fmt.Println("4 <= mul < 6")
+    default:
+        fmt.Println("mul >= 6")
+    }
 }
 ```
 
 3. switch 키워드 뒤에 Expression이 없어도 된다.
 
 ```go
-num := 10
-switch {
-case num < 10:
-    fmt.Println("num < 10")
-case num >= 10 && num < 20:
-    fmt.Println("10 <= num < 20")
-default:
-    fmt.Println("num > 20")
+func switch_test3() {
+    num := 10
+    switch {
+    case num < 10:
+        fmt.Println("num < 10")
+    case num >= 10 && num < 20:
+        fmt.Println("10 <= num < 20")
+    default:
+        fmt.Println("num > 20")
+    }
 }
 ```
 
@@ -101,16 +115,18 @@ default:
 다음 case로 흐르게 하려면 __fallthrough__ 구문을 사용해야 한다.
 
 ```go
-num := 1
-switch num {
-case 1:
-    fmt.Println("num : 1")
-    fallthrough
-case 2:
-    fmt.Println("num : 2")
-    fallthrough
-default:
-    fmt.Println("num : 3")
+func switch_test4() {
+    num := 1
+    switch num {
+    case 1:
+        fmt.Println("num : 1")
+        fallthrough
+    case 2:
+        fmt.Println("num : 2")
+        fallthrough
+    default:
+        fmt.Println("num : 3")
+    }
 }
 ```
 
@@ -119,28 +135,36 @@ default:
 익히 알고 있는 for문의 형태는 Go에서 아래와 같이 구현한다.
 
 ```go
-sum := 0
-for i := 1; i <= 100; ++i {
-    sum += i
+func for_test1() {
+    sum := 0
+    for i := 1; i <= 100; i++ {
+        sum += i
+    }
+    fmt.Println("Sum of 1~100 :", sum)
 }
 ```
 
 C언어에서의 while과 같이, for문에서 조건식만 사용해 루프를 구성할 수도 있다.
 
 ```go
-sum := 0
-i := 1
-for i <= 100 {
-    sum += i
-    ++i
+func for_test2() {
+    sum := 0
+    i := 1
+    for i <= 100 {
+        sum += i
+        i++
+    }
+    fmt.Println("Sum of 1~100 :", sum)
 }
 ```
 
 조건식까지 생략하여 무한루프를 구성할 수 있다.
 
 ```go
-for {
-    fmt.Println("Hello)
+func for_test3() {
+    for {
+        fmt.Println("Hello")
+    }
 }
 ```
 
@@ -148,8 +172,10 @@ for {
 아래와 같이 구성하면, 마치 파이썬의 enumerate와 같이 각 요소와 인덱스를 차례대로 순회한다.
 
 ```go
-strs := []string{"AAA", "BBB", "CCC"}
-for idx, name := range strs {
-    fmt.Println(idx, name)
+func for_test4() {
+    strs := []string{"AAA", "BBB", "CCC"}
+    for idx, name := range strs {
+        fmt.Println(idx, name)
+    }
 }
 ```

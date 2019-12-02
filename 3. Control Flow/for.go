@@ -21,6 +21,12 @@ func for_test2() {
 }
 
 func for_test3() {
+	for {
+		fmt.Println("Hello")
+	}
+}
+
+func for_test4() {
 	strs := []string{"AAA", "BBB", "CCC"}
 	for idx, name := range strs {
 		fmt.Println(idx, name)
@@ -31,4 +37,5 @@ func main() {
 	for_test1()
 	for_test2()
 	for_test3()
+	for_test4()
 }
