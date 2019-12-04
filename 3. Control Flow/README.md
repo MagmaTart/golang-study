@@ -19,10 +19,10 @@ Go에서 if문은 아래와 같이 사용한다. 조건의 형식은 여태 보�
 
 ```go
 func if_test1() {
-    a := 10
-    if a > 5 {
-        fmt.Println("a is greater than 5")
-    }
+	a := 10
+	if a > 5 {
+		fmt.Println("a is greater than 5")
+	}
 }
 ```
 
@@ -32,14 +32,14 @@ else if도 같은 형식으로 사용한다.
 
 ```go
 func if_test2() {
-    a := 70
-    if a < 60 {
-        fmt.Println("a < 60")
-    } else if a > 60 && a < 70 {
-        fmt.Println("60 < a < 70")
-    } else {
-        fmt.Println("a > 70")
-    }
+	a := 70
+	if a < 60 {
+		fmt.Println("a < 60")
+	} else if a > 60 && a < 70 {
+		fmt.Println("60 < a < 70")
+	} else {
+		fmt.Println("a > 70")
+	}
 }
 ```
 
@@ -47,12 +47,12 @@ func if_test2() {
 
 ```go
 func if_test3() {
-    a := 5
-    if num := a * a; num > 20 {
-        fmt.Println("num is greater than 20")
-    } else {
-        fmt.Println("num is equal or smaller than 20")
-    }
+	a := 5
+	if num := a * a; num > 20 {
+		fmt.Println("num is greater than 20")
+	} else {
+		fmt.Println("num is equal or smaller than 20")
+	}
 }
 ```
 
@@ -66,15 +66,15 @@ C언어에서의 switch와 기본적으로 같은 기능을 하지만, 훨씬 �
 
 ```go
 func switch_test1() {
-    num := 2
-    switch num {
-    case 1:
-        fmt.Println("num == 1")
-    case 2, 3:
-        fmt.Println("num == 2 or num == 3")
-    default:
-        fmt.Println("num > 3")
-    }
+	num := 2
+	switch num {
+	case 1:
+		fmt.Println("num == 1")
+	case 2, 3:
+		fmt.Println("num == 2 or num == 3")
+	default:
+		fmt.Println("num > 3")
+	}
 }
 ```
 
@@ -83,15 +83,15 @@ case 키워드에도 마찬가지로 값이 아니라 조건문을 넣을 수 �
 
 ```go
 func switch_test2() {
-    num := 2
-    switch mul := num * 2; {
-    case mul < 4:
-        fmt.Println("mul < 4")
-    case mul >= 4 && mul < 6:
-        fmt.Println("4 <= mul < 6")
-    default:
-        fmt.Println("mul >= 6")
-    }
+	num := 2
+	switch mul := num * 2; {
+	case mul < 4:
+		fmt.Println("mul < 4")
+	case mul >= 4 && mul < 6:
+		fmt.Println("4 <= mul < 6")
+	default:
+		fmt.Println("mul >= 6")
+	}
 }
 ```
 
@@ -99,15 +99,15 @@ func switch_test2() {
 
 ```go
 func switch_test3() {
-    num := 10
-    switch {
-    case num < 10:
-        fmt.Println("num < 10")
-    case num >= 10 && num < 20:
-        fmt.Println("10 <= num < 20")
-    default:
-        fmt.Println("num > 20")
-    }
+	num := 10
+	switch {
+	case num < 10:
+		fmt.Println("num < 10")
+	case num >= 10 && num < 20:
+		fmt.Println("10 <= num < 20")
+	default:
+		fmt.Println("num > 20")
+	}
 }
 ```
 
@@ -116,17 +116,17 @@ func switch_test3() {
 
 ```go
 func switch_test4() {
-    num := 1
-    switch num {
-    case 1:
-        fmt.Println("num : 1")
-        fallthrough
-    case 2:
-        fmt.Println("num : 2")
-        fallthrough
-    default:
-        fmt.Println("num : 3")
-    }
+	num := 1
+	switch num {
+	case 1:
+		fmt.Println("num : 1")
+		fallthrough
+	case 2:
+		fmt.Println("num : 2")
+		fallthrough
+	default:
+		fmt.Println("num : 3")
+	}
 }
 ```
 
@@ -136,11 +136,11 @@ func switch_test4() {
 
 ```go
 func for_test1() {
-    sum := 0
-    for i := 1; i <= 100; i++ {
-        sum += i
-    }
-    fmt.Println("Sum of 1~100 :", sum)
+	sum := 0
+	for i := 1; i <= 100; i++ {
+		sum += i
+	}
+	fmt.Println("Sum of 1~100 :", sum)
 }
 ```
 
@@ -148,13 +148,13 @@ C언어에서의 while과 같이, for문에서 조건식만 사용해 루프를 
 
 ```go
 func for_test2() {
-    sum := 0
-    i := 1
-    for i <= 100 {
-        sum += i
-        i++
-    }
-    fmt.Println("Sum of 1~100 :", sum)
+	sum := 0
+	i := 1
+	for i <= 100 {
+		sum += i
+		i++
+	}
+	fmt.Println("Sum of 1~100 :", sum)
 }
 ```
 
@@ -162,9 +162,9 @@ func for_test2() {
 
 ```go
 func for_test3() {
-    for {
-        fmt.Println("Hello")
-    }
+	for {
+		fmt.Println("Hello")
+	}
 }
 ```
 
@@ -173,9 +173,9 @@ func for_test3() {
 
 ```go
 func for_test4() {
-    strs := []string{"AAA", "BBB", "CCC"}
-    for idx, name := range strs {
-        fmt.Println(idx, name)
-    }
+	strs := []string{"AAA", "BBB", "CCC"}
+	for idx, name := range strs {
+		fmt.Println(idx, name)
+	}
 }
 ```
