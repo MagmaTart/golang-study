@@ -7,10 +7,10 @@ Go의 모든 소스 코드 및 문자열은 UTF-8로 인코딩되며, 따라서 
 
 ```go
 func unicode_test() {
-	var str string = "안녕하세요"
-	for idx, ch := range str {
-		fmt.Println(idx, ch)
-	}
+    var str string = "안녕하세요"
+    for idx, ch := range str {
+        fmt.Println(idx, ch)
+    }
 }
 ```
 
@@ -35,10 +35,10 @@ ch의 값으로 보아, 각 문자는 유니코드로 저장되는 것을 확인
 
 ```go
 func str_print_test() {
-	var str string = "스트링"
-	for idx, ch := range str {
-		fmt.Println(idx, string(ch))
-	}
+    var str string = "스트링"
+    for idx, ch := range str {
+        fmt.Println(idx, string(ch))
+    }
 }
 ```
 
@@ -48,10 +48,10 @@ func str_print_test() {
 
 ```go
 func str_loop_test() {
-	var str string = "퇴근"
-	for i := 0; i < len(str); i++ {
-		fmt.Printf("%d : %x\n", i, str[i])
-	}
+    var str string = "퇴근"
+    for i := 0; i < len(str); i++ {
+        fmt.Printf("%d : %x\n", i, str[i])
+    }
 }
 ```
 
@@ -69,10 +69,10 @@ func str_loop_test() {
 
 ```go
 func str_modify_test() {
-	var str string = "퇴근"
-	b_str := []byte(str)
-	b_str[2] += 5
-	fmt.Println(string(b_str))
+    var str string = "퇴근"
+    b_str := []byte(str)
+    b_str[2] += 5
+    fmt.Println(string(b_str))
 }
 ```
 
@@ -89,11 +89,11 @@ func str_modify_test() {
 
 ```go
 func str_concat_test() {
-	str1 := "테"
-	str2 := "스트"
-	fmt.Println(str1 + str2)
-	str1 += str2
-	fmt.Println(str1)
+    str1 := "테"
+    str2 := "스트"
+    fmt.Println(str1 + str2)
+    str1 += str2
+    fmt.Println(str1)
 }
 ```
 

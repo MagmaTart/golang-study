@@ -40,11 +40,11 @@ float 타입 변수도 마찬가지로 타입을 명시하지 않고 선언해 �
 
 ```go
 func type_test1() {
-	a := 100
-	b := 35.465
+    a := 100
+    b := 35.465
 
-	fmt.Println("Size of int :", unsafe.Sizeof(a))
-	fmt.Println("Size of float :", unsafe.Sizeof(b))
+    fmt.Println("Size of int :", unsafe.Sizeof(a))
+    fmt.Println("Size of float :", unsafe.Sizeof(b))
 }
 ```
 
@@ -54,12 +54,12 @@ func type_test1() {
 
 ```go
 func type_test2() {
-	var b byte = 0x9C
-	var r1 rune = '민'
-	var r2 rune = '\uAD7F'
+    var b byte = 0x9C
+    var r1 rune = '민'
+    var r2 rune = '\uAD7F'
 
-	fmt.Println("Size of byte :", unsafe.Sizeof(b))
-	fmt.Println("Size of rune :", unsafe.Sizeof(r1), unsafe.Sizeof(r2))
+    fmt.Println("Size of byte :", unsafe.Sizeof(b))
+    fmt.Println("Size of rune :", unsafe.Sizeof(r1), unsafe.Sizeof(r2))
 }
 ```
 
@@ -71,20 +71,20 @@ complex는 흔히 아는 a+bi 형식으로 선언할 수도 있고, `complex` �
 
 ```go
 func type_test3() {
-	var com64 complex64 = 5.54 + 2.71i
-	var com128 complex128 = 7.01 + 3.4512e-10i
-	var com64_2 complex64 = complex(5.54, 2.71)			// complex 함수를 이용해 선언 가능
-	var com128_2 complex128 = complex(7.01, 3.4512e-10)	// complex 함수를 이용해 선언 가능
+    var com64 complex64 = 5.54 + 2.71i
+    var com128 complex128 = 7.01 + 3.4512e-10i
+    var com64_2 complex64 = complex(5.54, 2.71)			// complex 함수를 이용해 선언 가능
+    var com128_2 complex128 = complex(7.01, 3.4512e-10)	// complex 함수를 이용해 선언 가능
 
-	com64_real := real(com64)
-	com64_imag := imag(com64)
-	com128_real := real(com128)
-	com128_imag := imag(com128)
+    com64_real := real(com64)
+    com64_imag := imag(com64)
+    com128_real := real(com128)
+    com128_imag := imag(com128)
 
-	fmt.Println("Complex64 :", unsafe.Sizeof(com64), unsafe.Sizeof(com64_2))
-	fmt.Println("Complex128 :", unsafe.Sizeof(com128), unsafe.Sizeof(com128_2))
-	fmt.Println("Complex64 real, imag :", unsafe.Sizeof(com64_real), unsafe.Sizeof(com64_imag))
-	fmt.Println("Complex128 real, imag :", unsafe.Sizeof(com128_real), unsafe.Sizeof(com128_imag))
+    fmt.Println("Complex64 :", unsafe.Sizeof(com64), unsafe.Sizeof(com64_2))
+    fmt.Println("Complex128 :", unsafe.Sizeof(com128), unsafe.Sizeof(com128_2))
+    fmt.Println("Complex64 real, imag :", unsafe.Sizeof(com64_real), unsafe.Sizeof(com64_imag))
+    fmt.Println("Complex128 real, imag :", unsafe.Sizeof(com128_real), unsafe.Sizeof(com128_imag))
 }
 ```
 
