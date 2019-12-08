@@ -39,8 +39,37 @@ func slice_slice_insert() {
 	print_slice(slc)
 }
 
+func slice_element_delete() {
+	slc := []int{1, 2, 3, 4, 5}
+	print_slice(slc)
+	idx := 2
+	slc = append(slc[:idx], slc[idx+1:]...)
+	print_slice(slc)
+}
+
+func slice_multi_element_delete() {
+	slc := []int{1, 2, 3, 4, 5, 6, 7}
+	print_slice(slc)
+	i := 2
+	k := 3
+	slc = append(slc[:i], slc[i+k:]...)
+	print_slice(slc)
+}
+
+func slice_delete_capacity_check() {
+	slc := []int{1, 2, 3, 4, 5, 6, 7}
+	fmt.Printf("len : %d, cap : %d\n", len(slc), cap(slc))
+	i := 2
+	k := 3
+	slc = append(slc[:i], slc[i+k:]...)
+	fmt.Printf("len : %d, cap : %d\n", len(slc), cap(slc))
+}
+
 func main() {
-	slice_element_insert_append()
-	slice_element_insert_copy()
-	slice_slice_insert()
+	// slice_element_insert_append()
+	// slice_element_insert_copy()
+	// slice_slice_insert()
+	// slice_element_delete()
+	// slice_multi_element_delete()
+	slice_delete_capacity_check()-
 }
