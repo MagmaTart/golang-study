@@ -37,8 +37,28 @@ func file_bufio_write_test() error {
 	return err
 }
 
+func file_bufio_scanner_test() error {
+	filename := "test.txt"
+	file, err := os.Open(filename)
+	if err != nil {		// 에러 발생시
+		return err
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	scanner.Split(bufio.ScanWords)
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+	}
+	if err := scanner.Err(); err != nil {
+		return err
+	}
+	return err
+}
+
 func main() {
-	err := file_bufio_read_test()
-	err = file_bufio_write_test()
+	// err := file_bufio_read_test()
+	// err = file_bufio_write_test()
+	err := file_bufio_scanner_test()
 	fmt.Println(err)
 }

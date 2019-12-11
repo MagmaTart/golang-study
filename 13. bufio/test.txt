@@ -1,1 +1,3 @@
 bufio reading test!
+Second Line!
+Third Line!
