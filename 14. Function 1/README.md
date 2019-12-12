@@ -81,4 +81,35 @@ func main() {
 이름이 붙은 반환 값은 변수가 되며, 함수 내부에서 참조하고 변경할 수 있다. 또한 어떤 값을 반환할 것인지 이미 변수 이름으로써 알고 있으므로, `return`문에 반환 값들은 생략할 수 있다.
 반환 값의 변수는 기본적으로 해당 자료형의 기본값으로 초기화된다. 위의 예제에서 `add`와 `mul`은 각각 0으로 초기화되었다.
 
+### 가변인자 함수
 
+가변인자 함수는 __인자의 개수가 정해져 있지 않은 함수__ 를 의미한다. Go에서 같은 자료형을 가지는 가변인자들은 슬라이스로써 전달받을 수 있다. 인자를 선언할 때 `...` 키워드를 이용한다.
+
+```go
+func add_all_values_in_slice(slc... int) int {
+	total := 0
+	for i := 0; i < len(slc); i++ {
+		total += slc[i]
+	}
+	return total
+}
+
+func main() {
+	result := add_all_values_in_slice(5, 6, 7, 8, 9)       // result : 35
+	result = add_all_values_in_slice(5, 6, 7, 8, 9, 10)    // result : 45
+}
+```
+
+`int`형의 가변인자들을 모두 받아 `slc`에 슬라이스 형태로 묶어 사용한다. 호출시에 인자는 몇 개가 들어가도 상관이 없다.
+
+반대로 가변인자 함수에 슬라이스를 풀어서 전달하고 싶을 경우, 호출시에 `...` 키워드를 사용한다.
+
+```go
+func main() {
+    slc := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    result := add_all_values_in_slice(slc...)
+    fmt.Printf("Add result : %d\n", result)
+}
+```
+
+`slc...`은 `slc` 슬라이스를 풀어서, 마치 각 요소들이 모두 따로 인자로 들어가는 것과 같이 구성해준다.
