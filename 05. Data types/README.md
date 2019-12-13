@@ -105,7 +105,19 @@ Complex128 real, imag : 8 8
 ```go
 type MyInteger int
 var a, b MyInteger = 100, 200
-fmt.Println(a+b)
+fmt.Println(a + b)    // 300
 ```
 
 `MyInteger`는 `int`로 치환된다. `type` 키워드로 설정한 이름은 해당 스코프 내에서만 유효하다.
+
+C에서의 타입 재정의와 다른 점이 있다면, 아래와 같은 상황이 있다.
+
+```go
+type Apple int
+type Banana int
+var a Apple = 100
+var b Banana = 200
+fmt.Println(a+b)    // Error!
+```
+
+같은 `int` 타입을 각각 다른 이름인 `Apple`, `Banana`로 재정의했다. 분명 둘이 같은 `int` 타입이었으므로, `Apple` 타입과 `Banana` 타입 변수를 더했을 때 문제가 없을 것으로 예상하였다. 그러나 Go의 컴파일러는, `Apple`과 `Banana`가 다른 타입이라고 컴파일 에러를 일으킨다. 이는 Go가 재정의한 타입에 대해서도 엄격한 검사를 시행한다는 점을 볼 수 있는 부분이다. 이는 프로그래머가 더 안전한 코드를 짤 수 있도록 도울 것이다.

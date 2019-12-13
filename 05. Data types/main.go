@@ -43,7 +43,10 @@ func main() {
 	type_test2()
 	type_test3()
 
-	type MyInteger int
-	var a, b MyInteger = 100, 200
+	// var a, b MyInteger = 100, 200
+	type Apple int
+	type Banana int
+	var a Apple = 100
+	var b Banana = 200
 	fmt.Println(a+b)
 }
