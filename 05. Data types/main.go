@@ -3,6 +3,7 @@ package main
 import "fmt"
 import "unsafe"
 
+
 func type_test1() {
 	a := 100
 	b := 35.465
@@ -41,4 +42,8 @@ func main() {
 	type_test1()
 	type_test2()
 	type_test3()
+
+	type MyInteger int
+	var a, b MyInteger = 100, 200
+	fmt.Println(a+b)
 }

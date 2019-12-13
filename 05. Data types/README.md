@@ -96,3 +96,16 @@ Complex128 : 16 16
 Complex64 real, imag : 4 4
 Complex128 real, imag : 8 8
 ```
+
+### Renamed Type
+
+다른 언어들에서와 같이, Go에서도 각 타입에 사용자 정의 이름을 붙여줄 수 있다.\
+아래와 같이, `type` 키워드를 이용한다.
+
+```go
+type MyInteger int
+var a, b MyInteger = 100, 200
+fmt.Println(a+b)
+```
+
+`MyInteger`는 `int`로 치환된다. `type` 키워드로 설정한 이름은 해당 스코프 내에서만 유효하다.
