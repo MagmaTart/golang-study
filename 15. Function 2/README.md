@@ -44,3 +44,4 @@ result := anonymous_add(10, 20)
 ### Higher-order Function
 
 ~작성 예정~
+[여기 참고](https://www.golangprograms.com/higher-order-functions-in-golang.html)
