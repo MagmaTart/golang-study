@@ -1,6 +1,7 @@
 # 15. Function 2
 
-Go에서 함수는 __일급 객체(First-class Citizen)__ 이다. 즉, Go에서는 함수를 변수에 할당할 수 있으며, 함수를 함수의 인자로써 넘길 수 있고, 함수가 함수를 리턴할 수 있다. 일급 객체에 대한 자세한 내용은 다음 블로그 글을 참고하자 : [1급 객체란?](https://medium.com/@lazysoul/functional-programming-%EC%97%90%EC%84%9C-1%EA%B8%89-%EA%B0%9D%EC%B2%B4%EB%9E%80-ba1aeb048059)
+Go에서 함수는 __일급 객체(First-class Citizen)__ 이다. 즉, Go에서는 함수를 변수에 할당할 수 있으며, 함수를 함수의 인자로써 넘길 수 있고, 함수가 함수를 리턴할 수 있다.\
+일급 객체에 대한 자세한 내용은 다음 블로그 글을 참고하자 : [1급 객체란?](https://medium.com/@lazysoul/functional-programming-%EC%97%90%EC%84%9C-1%EA%B8%89-%EA%B0%9D%EC%B2%B4%EB%9E%80-ba1aeb048059)
 
 위의 사실을 기억하고 관련된 내용을 하나씩 살펴보자.
 
@@ -89,8 +90,36 @@ func main() {
 
 `get_cubic`은 `func(int) int` 모양의 함수를 인자로 받고, 내부적으로 `calculator`라는 이름으로 사용한다. `get_cubic`의 첫 번째 인자에는 `func(int) int` 형의 어떤 함수라도 올 수 있다. 입력 값의 세제곱을 반환하는 코드이므로, calculator 인자에는 입력된 `int` 값의 세제곱을 반환하는 `cubic` 함수를 전달했다. 따라서 `get_cubic`은 `cubic(n)`의 결과를 리턴하게 된다.
 
-### Higher-order function의 고차원 추상화
+한 가지의 예제를 더 보자.
 
+```go
+func add(a, b int) int {
+    return a + b
+}
 
+func sub(a, b int) int {
+    return a - b
+}
 
-[여기 참고](https://www.golangprograms.com/higher-order-functions-in-golang.html)
+func mul(a, b int) int {
+    return a * b
+}
+
+func div(a, b int) int {
+    return a / b
+}
+
+func arithmetic(op func(int, int) int, a int, b int) int {
+    return op(a, b)
+}
+
+func main() {
+    a, b := 100, 30
+    add_result := arithmetic(add, a, b)     // add_result := 130
+    sub_result := arithmetic(sub, a, b)     // sub_result := 70
+    mul_result := arithmetic(mul, a, b)     // mul_result := 3000
+    div_result := arithmetic(div, a, b)     // div_result := 3
+}
+```
+
+`arithmetic` 함수는 사칙연산을 수행하는 각 함수 중 하나를 입력받아, 해당 함수를 실행한 결과를 출력한다. 고차 함수를 이용하면 이와 같은 코드의 고차원적인 추상화가 가능해진다.
