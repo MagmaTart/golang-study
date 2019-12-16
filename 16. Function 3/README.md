@@ -79,3 +79,37 @@ func main() {
 ```
 
 이 코드에서도 똑같이, `generator`의 내부 함수가 외부의 `num`을 참조하므로 클로저가 된다.
+
+### Named Function type
+
+Go에서는 함수가 First-class Citizen이므로, 변수의 자료형과 같이 함수의 시그니처도 하나의 타입으로 정의할 수 있다. 이를 __Function type__ 이라고 한다.
+Function type을 검사할 때는 인자의 자료형 및 개수, 리턴값의 자료형 및 개수를 모두 검사한다.\
+예제를 통해 이전의 사칙연산 예제를 Function type을 적용해 수정해보자.
+
+```go
+type ArithmeticType func(a, b int) int
+
+func add(a, b int) int {
+    return a + b
+}
+
+func sub(a, b int) int {
+    return a - b
+}
+
+func mul(a, b int) int {
+    return a * b
+}
+
+func div(a, b int) int {
+    return a / b
+}
+
+func arithmetic(op ArithmeticType, a int, b int) int {
+    return op(a, b)
+}
+```
+
+`func(a, b int) int`의 함수 시그니처를 `ArithmeticType`이라는 이름으로 등록했다. 따라서 `arithmetic`의 첫 번째 인자는 무조건 시그니처가 `func(a, b int) int` 모양인 함수만 들어올 수 있게 된다.
+
+Function type도 자료형의 재정의와 동일한 성질을 가지고 있다. 같은 모양의 함수형을 재정의해도, __이름이 다르면 다른 함수형__ 으로 취급된다.
