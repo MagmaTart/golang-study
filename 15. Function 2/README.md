@@ -43,5 +43,54 @@ result := anonymous_add(10, 20)
 
 ### Higher-order Function
 
-~작성 예정~
+__Higher-order Function(고차 함수)__ 은 함수형 프로그래밍 패러다임에서 나온 개념으로, __함수를 파라미터로 전달받거나, 함수를 리턴하는 함수__ 를 의미한다. 이러한 코드 작성이 가능하려면 기본적으로 함수가 First-class Citizen 이어야 하며, 따라서 Go 코드는 Higher-order Function을 구현 가능하다.
+
+먼저 함수를 리턴하는 함수의 경우를 보자. 아래의 함수는 성과 이름을 각각 받아서 합친 `string`을 출력한다.
+
+```go
+func append_two_strings(str1 string) func(string) string {
+    return func(str2 string) string {
+        return str1 + " " + str2
+    }
+}
+
+func main() {
+    first_name := "Soomin"
+    last_name := "Lee"
+    name := append_two_strings(first_name)(last_name)   // name : "Soomin Lee"
+}
+```
+
+`append_two_strings` 함수는 `string` 하나를 입력받는다. 함수의 반환형이 `func(string) string {...}` 이므로, 또 다른 `string`을 입력받는 _함수를 리턴_ 한다. 따라서 `append_two_strings(first_name)` 가 리턴한 함수를 다시 호출할 수 있다.\
+그러므로 아래와 같이 작성할 수도 있다.
+
+```go
+appender := append_two_strings(first_name)
+name := appender(last_name)
+fmt.Println(name)
+```
+
+이제 함수를 인자로 받는 함수의 경우를 보자. 아래의 함수는 입력된 값의 세제곱을 반환한다.
+
+```go
+func cubic(n int) int {
+    return n * n * n
+}
+
+func get_cubic(calculator func(int) int, n int) int {
+    return calculator(n)
+}
+
+func main() {
+    result := get_cubic(cubic, 3)
+    fmt.Println(result)
+}
+```
+
+`get_cubic`은 `func(int) int` 모양의 함수를 인자로 받고, 내부적으로 `calculator`라는 이름으로 사용한다. `get_cubic`의 첫 번째 인자에는 `func(int) int` 형의 어떤 함수라도 올 수 있다. 입력 값의 세제곱을 반환하는 코드이므로, calculator 인자에는 입력된 `int` 값의 세제곱을 반환하는 `cubic` 함수를 전달했다. 따라서 `get_cubic`은 `cubic(n)`의 결과를 리턴하게 된다.
+
+### Higher-order function의 고차원 추상화
+
+
+
 [여기 참고](https://www.golangprograms.com/higher-order-functions-in-golang.html)
